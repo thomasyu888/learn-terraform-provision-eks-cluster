@@ -65,11 +65,11 @@ module "eks" {
 
       instance_types = ["t3.small", "t3.medium", "t3.xlarge"]
       labels = {
-        env = "tyu-test"
+        env = "tyu-k8-node-group-1"
       }
 
       min_size     = 1
-      max_size     = 5
+      max_size     = 6
       desired_size = 2
     }
 
@@ -78,7 +78,7 @@ module "eks" {
 
       instance_types = ["t3.large"]
       labels = {
-        env = "tyu-test"
+        env = "tyu-k8-node-group-2"
       }
       capacity_type  = "SPOT"
       min_size     = 1
