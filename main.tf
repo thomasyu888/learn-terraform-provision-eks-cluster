@@ -45,10 +45,10 @@ module "vpc" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "19.5.1"
+  version = "19.12.0"
 
   cluster_name    = local.cluster_name
-  cluster_version = "1.24"
+  cluster_version = "1.25"
 
   vpc_id                         = module.vpc.vpc_id
   subnet_ids                     = module.vpc.private_subnets
@@ -63,20 +63,26 @@ module "eks" {
     one = {
       name = "node-group-1"
 
-      instance_types = ["t3.small"]
+      instance_types = ["t3.small", "t3.medium", "t3.xlarge"]
+      labels = {
+        env = "tyu-test"
+      }
 
       min_size     = 1
-      max_size     = 3
+      max_size     = 5
       desired_size = 2
     }
 
     two = {
       name = "node-group-2"
 
-      instance_types = ["t3.small"]
-
+      instance_types = ["t3.large"]
+      labels = {
+        env = "tyu-test"
+      }
+      capacity_type  = "SPOT"
       min_size     = 1
-      max_size     = 2
+      max_size     = 3
       desired_size = 1
     }
   }

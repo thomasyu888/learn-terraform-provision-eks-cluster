@@ -2,3 +2,9 @@
 
 This repo is a companion repo to the [Provision an EKS Cluster tutorial](https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks), containing
 Terraform configuration files to provision an EKS cluster on AWS.
+
+
+## launching the stack
+
+1. Make sure you `export TF_CLOUD_ORGANIZATION=sage-bionetworks`
+1. Log into jumpcloud and terraform cloud and replace the AWS credentials within the variable set.
